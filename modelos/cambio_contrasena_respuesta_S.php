@@ -8,7 +8,7 @@
         rel="stylesheet">
 
 
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css"><!-- cambiar la direcion de los estilos-->
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 
                     <button type="submit">Recuperar Contraseña</button><br>
                     <br>
-                    <a href="index.php">ATRAS</a><br>
+                    <a href="../index.php">ATRAS</a><br>
                     
                 </form>
 

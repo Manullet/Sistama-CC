@@ -10,7 +10,7 @@
                 Inicio</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/php/php/cerrar_sesion.php" class="nav-link">Cerrar Sesion</a>
+            <a href="/SISTAMA-CC/php/cerrar_sesion.php" class="nav-link">Cerrar Sesion</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
         <a style="cursor:pointer;" class="nav-link" onclick="CargarContenido('vistas/Mantenimiento_obejetos.php','content-wrapper')">
