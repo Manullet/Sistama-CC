@@ -1,108 +1,83 @@
 <?php
-include 'conexion_be.php';
-
-    if(isset($_POST['Agregar'])){
-        $Pregunta = $_POST['Pregunta'];
-        $Fecha_Creacion = $_POST['Fecha_Creacion'];
-        $Fecha_Actualizacion = $_POST['Fecha_Actualizacion'];
+        //include "php/conexion_be.php";
+        //include "php/registro_usuario_be.php";
+        session_start();
+        //para validar si inicio sesion
+        if(!isset($_SESSION['usuario'])){
+            echo'
         
-        if ( empty($Pregunta) || empty($Fecha_Creacion) || empty($Fecha_Actualizacion)) {
-            echo "<script language='JavaScript'>
-            alert('Por favor, complete todos los campos');
-            </script>";
-        } else {
-            include("conexion_be.php");
-            $Pregunta = mysqli_real_escape_string($conexion, $Pregunta);
-            $Fecha_Creacion = mysqli_real_escape_string($conexion, $Fecha_Creacion);
-            $Fecha_Actualizacion = mysqli_real_escape_string($conexion, $Fecha_Actualizacion);
-        
-        $sql = "INSERT INTO preguntas (Pregunta, Fecha_Creacion, Fecha_Actualizacion) 
-            VALUES ( '$Pregunta', '$Fecha_Creacion', '$Fecha_Actualizacion')";
+            <script> 
+                alert("Debes iniciar sesion");
+                window.location = "index.php";
+            </script>
             
-        $resultado = mysqli_query($conexion, $sql);
-
-            if($resultado){
-                echo "<script language='JavaScript'>
-                alert('Los datos fueron ingresados correctamente a la BD');
-                //location.assign('index.php');
-                </script>";
-                header("location: ../bienvenida.php");
-            } else {
-                echo "<script language='JavaScript'>
-                alert('ERROR: No se han podido ingresar a la BD');
-                </script>";
-            }
-
-            mysqli_close($conexion);
-        }
-    }
-
-    if(isset($_POST['Editar'])){
-                
-        $Id_pregunta =  $_POST['Id_pregunta'];
-        $Pregunta = mysqli_real_escape_string($conexion, $_POST['Pregunta']);
-        $Fecha_Creacion = mysqli_real_escape_string($conexion, $_POST['Fecha_Creacion']);
-        $Fecha_Actualizacion =mysqli_real_escape_string($conexion, $_POST['Fecha_Actualizacion']);
-
-
-            $sql = "UPDATE preguntas SET Pregunta='$Pregunta', Fecha_Creacion='$Fecha_Creacion', Fecha_Actualizacion='$Fecha_Actualizacion'  WHERE Id_pregunta=$Id_pregunta";
-
-        $resultado = mysqli_query($conexion, $sql);
-
-        if($resultado){
-            echo "<script language='JavaScript'>
-            alert('Los datos fueron actualizados correctamente');
-            //location.assign('index.php');
-            </script>";
-            header("location: ../models/mantenimiento.php");
-        } else {
-            echo "<script language='JavaScript'>
-            alert('ERROR: No se han podido actualizar los datos');
-            </script>";
-        }
-
-        mysqli_close($conexion);
-    }
-
-    $Id_pregunta = $_GET['Id_pregunta'];
-
-    $query = "SELECT * FROM preguntas WHERE Id_pregunta = $Id_pregunta";
-            $result = $conexion->query($query);
-
-            if ($result === false) {
-                die("Error en la consulta: " . $conexion->error);
-            }
-
-            $Pregunta = $result->fetch_assoc();
-
-            if (!$Pregunta) {
-                die("Pregunta no encontrada");
-            }
+            ';
         
-            if(isset($_GET['Id_pregunta']) && is_numeric($_GET['Id_pregunta'])){
-                $id = $_GET['Id_pregunta'];
-
-                if (isset($_POST['confirmar'])) {
-                    
-                    $query = "DELETE FROM preguntas WHERE Id_pregunta = $Id_pregunta";
-                    $result = $conexion->query($query);
+            //header("location: index.php");
+            //destruye cualquier session
+            session_destroy();
+            //para el codigo
+            die();
+            
+        }
         
-                    if ($result) {
-                        echo "<script language='JavaScript'>
-                        alert('Registro eliminado correctamente');
-                        //location.assign('index.php');
-                        
-                        </script>";
-                        header("location: ../modelos/mantenimiento.php");
-                    } else {
-                        echo "<script language='JavaScript'>
-                        alert('Error al intentar eliminar el registro');
-                        location.assign('index.php');
-                        </script>";
-                    }
-                }
-            } else {
-                die("Id no válido");
-            }
-
 ?>
+
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Permiso Nuevo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1ce2b9e5a7.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    <form action="../modelos/agregar_preg.php" class="col-4 p-2 m-auto" method="POST">
+        <h3 class="text-center alert alert-secondary p-3" >Crear Pregunta</h3>
+      
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" name="Pregunta">
+  <label for="floatingInput">Pregunta</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" name="Actualizado_Por">
+  <label for="floatingPassword">Actualizado por</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" name="Creador_Por">
+  <label for="floatingInput">Creado por</label>
+</div>
+
+
+
+
+<button href="bienvenida.php" type="submit" class="btn btn-success" name="btnnuevo" value="ok">Crear</button>
+<a href="../vistas/Mantenimiento_preguntas.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
+
+
+
+  <!--<div class="mb-2">
+    <label for="exampleInputEmail1">Nombre</label>
+    <input type="text" class="form-control" name="nombre">
+  <div class="mb-2">
+    <label for="exampleInputEmail1">Usuario</label>
+    <input type="text" class="form-control" name="usuario">
+  </div>
+  <div class="mb-2">
+    <label for="exampleInputEmail1">Contraseña</label>
+    <input type="text" class="form-control" name="contraseña">
+  </div>
+  <div class="mb-2">
+    <label for="exampleInputEmail1">Correo Electronico</label>
+    <input type="text" class="form-control" name="correo">
+  </div>
+  <div class="mb-2">
+    <label for="exampleInputEmail1">Estado</label>
+    <input type="text" class="form-control" name="estado">
+  </div> -->
+
+</form>
+</body>
+    </html>

@@ -24,7 +24,7 @@ if(!isset($_SESSION['usuario'])) {
 </head>
 <body>
 
-   <form action="/Sistama-CC/php/registro_usuario_be.php" method="post">
+   <form action="/Sistema-CC/php/registro_usuario_be.php" method="post">
      <h2>CREAR USUARIO</h2>
      <input type="text" placeholder="Nombre completo" name="nombre_completo">
      <input type="text" placeholder="Correo Electronico" name="correo">
