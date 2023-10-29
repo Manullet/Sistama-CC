@@ -1,25 +1,27 @@
 <?php
+// Incluye el archivo de conexión a la base de datos
+include 'conexion_be.php';
 
-include "Modelo/conexion.php";
-
+// Verifica si se ha enviado un formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id=$_POST["id"];
-    $nombre=$_POST["nombre"];
-    $usuario=$_POST["usuario"];
-    $contraseña=$_POST["contraseña"];
-    $correo=$_POST["correo"];
-    $estado=$_POST["estado"];
+    // Obtiene los valores del formulario
+    $id = $_POST["id"];
+    $nombre_completo = $_POST["nombre_completo"];
+    $usuario = $_POST["usuario"];
+    $correo = $_POST["correo"];
+    $Estado = $_POST["Estado"];
+  
+    
+    // Llama al procedimiento almacenado con 4 argumentos
+    $sql = "CALL updateUsuario('$id', '$nombre_completo', '$usuario','$correo','$Estado')";
 
-    $sql = "CALL UpdateUsuario($id,'$nombre', '$usuario', '$contraseña', '$correo', $estado)";
-
-    if (mysqli_query($conexion,$sql)) {
-        header("Location: Actualizar_Usuario.php?success=true&message= El Usuario Se Actualizo Correctamente");
-        exit();
-        } else {
-            echo '<div class="alert alert-danger text-center">Error Al Actualizar El Usuario</div>';
-        }
-
-        mysqli_close($conexion);  
-    }
-
+    if (mysqli_query($conexion, $sql)) {
+      header("Location: ../bienvenida.php?success=true"); // Redirige a index.php con el parámetro success=true
+      exit(); // Detiene la ejecución del script
+  } else {
+      echo "Error al actualizar el usuario: " . mysqli_error($conexion);
+  }
+  
+    mysqli_close($conexion);
+}
 ?>

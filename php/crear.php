@@ -8,36 +8,38 @@
     <script src="https://kit.fontawesome.com/1ce2b9e5a7.js" crossorigin="anonymous"></script>
     </head>
     <body>
-    <form class="col-4 p-2 m-auto" method="POST">
+    <form action="../modelos/registro_usuario.php" class="col-4 p-2 m-auto" method="POST">
         <h3 class="text-center alert alert-secondary p-3" >Crear Usuario</h3>
         <?php
-        include "Modelo/conexion.php";
-        include "Controlador/registro_usuario.php";
+        //include "php/conexion_be.php";
+        //include "php/registro_usuario_be.php";
       ?>
 
       
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" name="nombre">
-  <label for="floatingInput">Email address</label>
+  <input type="text" class="form-control" name="nombre_completo">
+  <label for="floatingInput">Nombre</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" name="correo">
+  <label for="floatingInput">Correo </label>
 </div>
 <div class="form-floating mb-3">
   <input type="text" class="form-control" name="usuario">
-  <label for="floatingInput">Email address</label>
+  <label for="floatingPassword">Usuario</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="password" class="form-control" name="contraseña">
-  <label for="floatingPassword">Password</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" name="correo">
-  <label for="floatingInput">Email address</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" name="estado">
-  <label for="floatingInput">Email address</label>
+  <input type="password" class="form-control" name="contrasena">
+  <label for="floatingInput">Contraseña </label>
 </div>
 
-  <!--<div class="mb-2">
+
+  <!--<div class="form-floating mb-3">
+  <input type="text" class="form-control" name="Estado">
+  <label for="floatingInput">estado </label>
+</div>  
+  
+  <div class="mb-2">
     <label for="exampleInputEmail1">Nombre</label>
     <input type="text" class="form-control" name="nombre">
   <div class="mb-2">
@@ -57,7 +59,7 @@
     <input type="text" class="form-control" name="estado">
   </div> -->
   <button type="submit" class="btn btn-success" name="btnnuevo" value="ok">Crear</button>
-  <a href="index.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
+  <a href="../index.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
 </form>
 </body>
     </html>

@@ -2,86 +2,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/estilos.css">
+<link rel="stylesheet" href="assets/css/tblCategoria_especies.css">
 
+
+
+<style>.icono-grande {
+            font-size: 20px;
+            margin-right: 10px; 
+        }</style>
 <div class="containertable">
     <div class="d-flex justify-content-between align-items-end mb-4">
-        <div>
-            <h1 class="poppins-font mb-2">MANTENIMIENTO PREGUNTAS</h1>
+        <div >
+            <h1 class="poppins-font mb-2">FICHA</h1>
             <br>
-            <a href="php\mant_preguntas.php" class="btn btn-info">
-                <i class="nav-icon bi bi-question-circle"></i></i> Agregar pregunta
+            <a href="php\mant_preguntas.php" class="btn btn-outline-info">
+            <i class="bi bi-plus-square icono-grande"></i> Agregar Ficha
             </a>
         </div>
-
+        <br>
+        
+        
         <div class="mb-4 border-bottom">
             <form class="d-flex" role="search">
                 <div class="input-group">
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend" title="Buscar">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
-                    <input class="form-control" id="searchInput" type="search" placeholder="Buscar objeto..." aria-label="Search">
+                    <input class="form-control" id="searchInput" type="search" placeholder="Buscar Residuo..." aria-label="Search">
                 </div>
             </form>
         </div>
     </div>
 
+            <!--  descargar excel -->
+            <div class="center-vertical">
+            <button type="button" class="btn btn-danger" id="pdfButton">PDF</button>
+            <button type="button" class="btn btn-success" id="excelButton">EXCEL</button>
+            </div>
+            <!--  fin de descargar -->
+
+             <!-- descargar PDF-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+            <script>
+                document.getElementById("pdfButton").addEventListener("click", function() {
+                    // Código para generar el PDF usando jsPDF
+                    const pdf = new jsPDF();
+                    pdf.text("Contenido del PDF", 10, 10);
+                    pdf.save("documento.pdf");
+                });
+            </script>
+             <!--  fin de descargar PDF-->
+
+                 <!-- descargar EXCEL -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.8/xlsx.full.min.js"></script>
+
+                <script>
+                    document.getElementById("excelButton").addEventListener("click", function() {
+                        // Código para generar el archivo Excel usando SheetJS
+                        const data = [
+                            ["Nombre", "Edad"],
+                            ["Juan", 30],
+                            ["María", 25],
+                            ["Pedro", 28]
+                        ];
+                        const ws = XLSX.utils.aoa_to_sheet(data);
+                        const wb = XLSX.utils.book_new();
+                        XLSX.utils.book_append_sheet(wb, ws, "Hoja1");
+                        XLSX.writeFile(wb, "datos.xlsx");
+                    });
+                </script>
+
+                  <!-- Fin descargar EXCEL-->
+
+
+
+         <!--  seleccion de registros -->
+         <div class="formulario-registros">
+            <label for="cantidadRegistros" style="margin-right: 60px;">Mostrar
+            <select id="cantidadRegistros">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+            <span class="registros-text">Registros</span></label>
+        </div>
+           <!--  funcion para mostrar registros --> 
+        <script>
+            // Obtiene referencias a los elementos HTML
+         const selectCantidadRegistros = document.getElementById("cantidadRegistros");
+
+         selectCantidadRegistros.addEventListener("change", function() {
+         const cantidadSeleccionada = parseInt(selectCantidadRegistros.value);
+        console.log(`Se seleccionaron ${cantidadSeleccionada} registros.`);
+    });
+</script>
+
+        <!--  fin  -->
+
     <div class="table-responsive">
-        <table class="table table-hover">
-            <thead class="table-dark text-center" style="background-color: #343A40;">
+        <!--  tipo de clase de la tabla  -->
+        <table  class="table table-bordered">
+            <thead class="text-center" style="background-color: #AED4F3;">
                 <tr>
                     <!--  AQUI PONEN LAS CABECERAS DE SU TABLA  -->
-                    <th scope="col">Id</th>
-                    <th scope="col">Pregunta</th>
-                    <th scope="col">Actualizado por</th>
+                    <th scope="col">id_Sector</th>
+                    <th scope="col">id_Categoria Especie</th>
+                    <th scope="col">Categoria Especie</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Creado Por</th>
-                    <th scope="col">Fecha Creación</th>
-                    <th scope="col">Fecha Actualización</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Modificado Por</th>
+                    <th scope="col">Fecha Modificacion</th>
+                    <th scope="col">Estado</th>
                 </tr>
             </thead>
             <tbody class="text-center">
                 <?php
                 include "../php/conexion_be.php";
-                $sql = $conexion->query("SELECT * FROM preguntas");
+                $sql = $conexion->query("SELECT * FROM tbl_categorias_especies");
                 while ($datos = $sql->fetch_object()) { ?>
                     <tr>
                         <!--  AQUI PONEN SUS VARIABLES COMO ESTAN EN LA BASE DE DATOS    -->
-                        <td><?= $datos->Id_pregunta ?></td>
-                        <td><?= $datos->Pregunta ?></td>
-                        <td><?= $datos->Actualizado_Por  ?></td>
-                        <td><?= $datos->Creador_Por ?></td>
-                        <td><?= $datos->Fecha_Creacion ?></td>
-                        <td><?= $datos->Fecha_Actualizacion ?></td>
-                        <td>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-                        <button class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar('<?= $datos->Id_pregunta ?>', '<?= $datos->Pregunta ?>', '<?= $datos->Actualizado_Por ?>', '<?= $datos->Creador_Por ?>', '<?= $datos->Fecha_Creacion ?>', '<?= $datos->Fecha_Actualizacion ?>')">Editar</button>
-                                <form method="POST" action="../SISTEMA-AF/modelos/delete_preg.php" style="display: inline;">
-                                <input type="hidden" name="Id_pregunta" value="<?= $datos->Id_pregunta ?>">
-                                <button type="submit" class="btn btn-danger btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</button>
-                                </form>
-
-=======
->>>>>>> Stashed changes
-
-                            <button type="button" class="btn btn-editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar
+                        <td><?= $datos->id_categoria_especie ?></td>
+                        <td><?= $datos->categoria_especie?></td>
+                        <td><?= $datos->descripcion?></td>
+                        <td><?= $datos->creado_por?></td>
+                        <td><?= $datos->fecha_creacion ?></td>
+                        <td><?= $datos->modificado_por?></td>
+                        <td><?= $datos->fecha_modificacion ?></td>
+                        <td><?= $datos->estado?></td>
+                        <td><?= $datos->id_sector ?></td>
+                        <td class="actions-column">
+                    
+                            <button type="button" class="btn btn-editar" title="Editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar
                             ('<?= $datos->Id_pregunta ?>', '<?= $datos->Pregunta ?>', '<?= $datos->Actualizado_Por ?>', '<?= $datos->Creador_Por ?>', '<?= $datos->Fecha_Creacion ?>','<?= $datos->Fecha_Actualizacion ?>')">
-                                <i class="bi bi-pencil-square"></i>
-                                Editar
+                                <i class="bi bi-pencil-square" ></i>
+                                  <!--Editar-->
                             </button>
+                            </td>
+                            <td class="actions-column">
                             <form method="POST" action="modelos/delete_objeto.php" style="display: inline;">
                                 <input type="hidden" name="Id_pregunta" value="<?= $datos->Id_pregunta ?>">
-                                <button type="button" class="btn btn-danger btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar esta pregunta?')">
-                                    <i class="bi bi-trash"></i>
-                                    Eliminar
+                                <button type="button" class="btn btn-danger btn-eliminar" title="Eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar esta pregunta?')">
+                                    <i class="bi bi-x-circle-fill" ></i>
+                                     <!--Eliminar--> 
                                 </button>
                             </form>
-<<<<<<< Updated upstream
-=======
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
                         </td>
                     </tr>
                 <?php }
@@ -214,12 +281,4 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
     });
 </script>
 
-<<<<<<< Updated upstream
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-=======
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-=======
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes

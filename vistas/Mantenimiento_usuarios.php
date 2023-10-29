@@ -11,7 +11,14 @@
             <br>
             <a href="php\crear.php" class="btn btn-info">
                 <i class="nav-icon bi bi-people-fill"></i> Crear usuario
+<<<<<<< Updated upstream
                 
+=======
+<<<<<<< HEAD
+=======
+                
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
             </a>
         </div>
 
@@ -37,9 +44,19 @@
                     <th scope="col">Usuario</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Estado</th>
+<<<<<<< Updated upstream
                     <th scope="col">Rol</th>
                     <th scope="col">Fecha Creación</th>
                     <th scope="col">Vencimiento</th>
+=======
+<<<<<<< HEAD
+
+=======
+                    <th scope="col">Rol</th>
+                    <th scope="col">Fecha Creación</th>
+                    <th scope="col">Vencimiento</th>
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                     <th scope="col">Acciones</th> <!-- Added text-center class here -->
                 </tr>
             </thead>
@@ -49,6 +66,23 @@
                 $sql = $conexion->query("SELECT * FROM usuario");
                 while ($datos = $sql->fetch_object()) { ?>
                     <tr>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                        <td><?= $datos->id ?></td>
+                        <td><?= $datos-> nombre_completo ?></td>
+                        <td><?= $datos-> usuario?></td>
+                        <td><?= $datos-> correo ?></td>
+                        <td><?= $datos->Estado ?></td>
+                        <td>
+                        <button class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar('<?= $datos->id ?>', '<?= $datos->nombre_completo ?>', '<?= $datos->usuario ?>', '<?= $datos->correo ?>', '<?= $datos->Estado ?>')">Editar</button>
+                                <form method="POST" action="../SISTEMA-AF/modelos/delete_usuario.php" style="display: inline;">
+                                <input type="hidden" name="id" value="<?= $datos->id ?>">
+                                <button type="submit" class="btn btn-danger btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</button>
+                                </form>
+
+=======
+>>>>>>> Stashed changes
                         <td><?= $datos->Nombre ?></td>
                         <td><?= $datos->Id_Usuario ?></td>
                         <td><?= $datos->Usuario ?></td>
@@ -69,6 +103,10 @@
                                     Eliminar
                                 </button>
                             </form>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                         </td>
                     </tr>
                 <?php }
@@ -103,30 +141,67 @@
                 </button>
             </div>
             <div class="modal-body">
+<<<<<<< Updated upstream
                 <form id="formularioEditar" method="POST" action="Actualizar_Usuario.php">
+=======
+<<<<<<< HEAD
+                <form id="formularioEditar" method="POST" action="php/Actualizar_Usuario.php">
+=======
+                <form id="formularioEditar" method="POST" action="Actualizar_Usuario.php">
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                     <div class="form-group">
                         <label for="id">ID del usuario:</label>
                         <input type="text" class="form-control" id="id" name="id" readonly>
                     </div>
                     <div class="form-group">
+<<<<<<< Updated upstream
                         <label for="nombre">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
+=======
+<<<<<<< HEAD
+                        <label for="nombre_completo">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required>
+=======
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                     </div>
                     <div class="form-group">
                         <label for="usuario">Usuario:</label>
                         <input type="text" class="form-control" id="usuario" name="usuario" required>
                     </div>
                     <div class="form-group">
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
                         <label for="contraseña">Contraseña:</label>
                         <input type="text" class="form-control" id="contraseña" name="contraseña" required>
                     </div>
                     <div class="form-group">
+<<<<<<< Updated upstream
+=======
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                         <label for="correo">Correo:</label>
                         <input type="text" class="form-control" id="correo" name="correo" required>
                     </div>
                     <div class="form-group">
+<<<<<<< Updated upstream
                         <label for="estado">Estado:</label>
                         <input type="text" class="form-control" id="estado" name="estado" required>
+=======
+<<<<<<< HEAD
+                        <label for="Estado">Estado:</label>
+                        <input type="text" class="form-control" id="Estado" name="Estado" required>
+=======
+                        <label for="estado">Estado:</label>
+                        <input type="text" class="form-control" id="estado" name="estado" required>
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -161,6 +236,17 @@
 <!-- JavaScript para manejar la edición de usuarios -->
 <script>
     // Función para abrir el modal de edición
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    function abrirModalEditar(id, nombre_completo, usuario, correo, Estado) {
+        document.getElementById("id").value = id;
+        document.getElementById("nombre_completo").value = nombre_completo;
+        document.getElementById("usuario").value = usuario;
+        document.getElementById("correo").value = correo;
+        document.getElementById("Estado").value = Estado;
+=======
+>>>>>>> Stashed changes
     function abrirModalEditar(id, nombre, usuario, contraseña, correo, estado) {
         document.getElementById("id").value = id;
         document.getElementById("nombre").value = nombre;
@@ -168,6 +254,10 @@
         document.getElementById("contraseña").value = contraseña;
         document.getElementById("correo").value = correo;
         document.getElementById("estado").value = estado;
+<<<<<<< Updated upstream
+=======
+>>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
+>>>>>>> Stashed changes
 
         $('#modalEditar').modal('show'); // Mostrar el modal de edición
     }

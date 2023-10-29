@@ -1,6 +1,6 @@
 <?php
 
-include 'Modelo/conexion.php';
+include '../php/conexion_be.php';
 
 // Verifica si se ha enviado un formulario y si se proporcionó un ID de rol válido
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
@@ -8,21 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     $id = $_POST["id"];
 
     // Crea una consulta SQL para eliminar el rol con el ID proporcionado
-    $sql = "CALL DeleteUsuario($id)";
+    $sql = "DELETE FROM usuario WHERE id = '$id'";
 
     
     if (mysqli_query($conexion, $sql)) {
         // Éxito en la eliminación
-        header("Location: index.php?success=true&message=El rol se eliminó correctamente");
+        header("Location: ../bienvenida.php?success=true&message=El usuario se eliminó correctamente");
         exit();
     } else {
         // Error en la eliminación
-        header("Location: index.php?success=false&message=Hubo un error al eliminar el rol");
+        header("Location: ../bienvenida.php?success=false&message=Hubo un error al eliminar el usuario");
         exit();
     }
 } else {
     // Si no se proporcionó un ID de rol válido o no se envió un formulario, redirige a la página roles.php
-    header("Location: index.php");
+    header("Location: ../bienvenida.php");
     exit();
 }
 ?>

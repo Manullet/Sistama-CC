@@ -1,4 +1,3 @@
-
 <?php
 // Incluye el archivo de conexión a la base de datos
 include '../php/conexion_be.php';
