@@ -38,9 +38,6 @@
         <h3 class="text-center alert alert-secondary p-3" >Crear Permiso</h3>
       
 <div class="form-floating mb-3">
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   <input type="text" class="form-control" id="Id_rol" name="Id_rol">
   <label for="floatingInput">ROL</label>
 </div>
@@ -74,18 +71,6 @@
     <option value="Activo">Activo</option>
     <option value="Inactivo">Inactivo</option>
   </select>
-=======
->>>>>>> Stashed changes
-  <input type="text" class="form-control" name="Nombre">
-  <label for="floatingInput">Nombre</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" name="Nombre_Guard">
-  <label for="floatingInput">Nombre Guardado</label>
-<<<<<<< Updated upstream
-=======
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
 </div>
 <!--<div class="form-floating mb-3">
   <input type="date" class="form-control" name="Fecha_Creacion">
@@ -97,15 +82,7 @@
 </div> -->
 
 <button href="../vistas/Mantenimiento_permisos.php" type="submit" class="btn btn-success" name="btnnuevo" value="ok">Crear</button>
-<<<<<<< Updated upstream
-<a href="../vistas/Mantenimiento_permisos.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
-=======
-<<<<<<< HEAD
 <a href="../bienvenida.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
-=======
-<a href="../vistas/Mantenimiento_permisos.php"><i class="btn btn btn-danger" style="color: #fafcff;">Cancelar</i></a>
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
 
 
 

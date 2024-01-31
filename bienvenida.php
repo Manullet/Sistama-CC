@@ -36,7 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="shortcut icon" href="../dis/img/AdminLTELogo.png" type="image/x-icon">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../Sistema-CC/dist/css/roles.css">
+    <link rel="stylesheet" type="text/css" href="../SISTEMA-CC/dist/css/roles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -59,7 +59,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <div class="content-wrapper">
 
-    <?php include "vistas/dashboard.php" ?>
 
   </div>
   <!-- /.content-wrapper -->
@@ -77,6 +76,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 </script>
+<?php
+  if ($_SESSION["url"] !== '' && $_SESSION["content-wrapper"] !== '') { ?>
+    <script>
+      let url = '<?php echo $_SESSION['url'] ?>';
+      let wrapper = '<?php echo $_SESSION['content-wrapper'] ?>';
+      CargarContenido(url, wrapper);
+    </script>
+
+  <?php }else{ ?>
+    <script>
+      CargarContenido('vistas/dashboard.php','content-wrapper');
+    </script>
+  <?php } ?>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

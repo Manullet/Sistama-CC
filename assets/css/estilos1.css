@@ -1,0 +1,95 @@
+/* Estilos para las celdas del encabezado de la tabla */
+.header-cell {
+    background-color: #343A40; 
+    color: #ffffff; 
+}
+
+
+.custom-btn {
+    color: whitesmoke !important; /* Color del texto */
+}
+
+
+.custom-btn.btn-success {
+    background-color: #4BA319  !important; /* Color de fondo */
+}
+
+
+.custom-btn.btn-primary {
+    background-color: #1765EE    !important; /* Color de fondo */
+}
+
+.custom-btn.btn-primary:hover {
+    background-color: #3456D5 
+}
+
+.custom-btn.btn-success:hover {
+    background-color:  #3E8E41 
+}
+
+.custom-btn:hover {
+    opacity: 0.9;  
+}
+
+
+ div.title-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.poppins-font {
+    color: var(--heading, #343A40);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+}
+
+.center-vertical {
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-btn {
+    margin: 2px 2px;
+  }
+
+  
+  .custom-btn {
+    width: 135px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  
+
+  /* Estilos para la sección del formulario */
+section form {
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Estilos para el select */
+section form select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para el botón de búsqueda */
+section form button#buscarButton {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+section form button#buscarButton:hover {
+    background-color: #0056b3;
+}

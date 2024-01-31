@@ -16,15 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "CALL UpdateRole('$Id_rol', '$Nombre', '$Descripcion','$STATUS')";
 
     if (mysqli_query($conexion, $sql)) {
-<<<<<<< Updated upstream
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true&message=El rol se actualizó correctamente");
-=======
-<<<<<<< HEAD
         header("Location: ../bienvenida.php?success=true&message=El rol se actualizó correctamente");
-=======
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true&message=El rol se actualizó correctamente");
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
         exit(); // Detener la ejecución del script
     } else {
         echo "Error al actualizar el rol: " . mysqli_error($conexion);

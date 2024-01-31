@@ -12,15 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "CALL InsertRoles('$Nombre', '$Descripcion')";
 
     if (mysqli_query($conexion, $sql)) {
-<<<<<<< Updated upstream
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true");
-=======
-<<<<<<< HEAD
         header("Location: ..\bienvenida.php?success=true");
-=======
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true");
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
         exit(); // Detener la ejecución del script
     } else {
             echo "Error al insertar el nuevo rol: " . mysqli_error($conexion);

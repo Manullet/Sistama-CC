@@ -79,3 +79,15 @@ body.sidebar-collapse .poppins-font-aside {
 .btn-eliminar {
     transition: background-color 0.3s ease;
 }
+
+/*boton descargar PDF, EXCEL*/
+.center-vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
+
+.center-vertical .btn {
+    margin: 2px; 
+}

@@ -11,28 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Id_rol"])) {
     
     if (mysqli_query($conexion, $delete_query)) {
         // Éxito en la eliminación
-<<<<<<< Updated upstream
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true&message=El rol se eliminó correctamente");
-        exit();
-    } else {
-        // Error en la eliminación
-        header("Location: ../vistas/Mantenimiento_roles.php?success=false&message=Hubo un error al eliminar el rol");
-=======
-<<<<<<< HEAD
-        header("Location: ../../Sistema-AF/bienvenida.php?success=true&message=El rol se eliminó correctamente");
+        header("Location: ../../SISTEMA-CC/bienvenida.php?success=true&message=El rol se eliminó correctamente");
 
         exit();
     } else {
         // Error en la eliminación
-        header("../../Sistema-AF/bienvenida.php?success=false&message=Hubo un error al eliminar el rol");
-=======
-        header("Location: ../vistas/Mantenimiento_roles.php?success=true&message=El rol se eliminó correctamente");
-        exit();
-    } else {
-        // Error en la eliminación
-        header("Location: ../vistas/Mantenimiento_roles.php?success=false&message=Hubo un error al eliminar el rol");
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
+        header("../../SISTEMA-CC/bienvenida.php?success=false&message=Hubo un error al eliminar el rol");
         exit();
     }
 }

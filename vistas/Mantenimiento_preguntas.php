@@ -9,7 +9,7 @@
         <div>
             <h1 class="poppins-font mb-2">MANTENIMIENTO PREGUNTAS</h1>
             <br>
-            <a href="php\mant_preguntas.php" class="btn btn-info">
+            <a href="php/mant_preguntas.php" class="btn btn-info">
                 <i class="nav-icon bi bi-question-circle"></i></i> Agregar pregunta
             </a>
         </div>
@@ -54,34 +54,12 @@
                         <td><?= $datos->Fecha_Creacion ?></td>
                         <td><?= $datos->Fecha_Actualizacion ?></td>
                         <td>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                         <button class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar('<?= $datos->Id_pregunta ?>', '<?= $datos->Pregunta ?>', '<?= $datos->Actualizado_Por ?>', '<?= $datos->Creador_Por ?>', '<?= $datos->Fecha_Creacion ?>', '<?= $datos->Fecha_Actualizacion ?>')">Editar</button>
-                                <form method="POST" action="../SISTEMA-AF/modelos/delete_preg.php" style="display: inline;">
+                                <form method="POST" action="../SISTEMA-CC/modelos/delete_preg.php" style="display: inline;">
                                 <input type="hidden" name="Id_pregunta" value="<?= $datos->Id_pregunta ?>">
                                 <button type="submit" class="btn btn-danger btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</button>
                                 </form>
 
-=======
->>>>>>> Stashed changes
-
-                            <button type="button" class="btn btn-editar" data-toggle="modal" data-target="#modalEditar" onclick="abrirModalEditar
-                            ('<?= $datos->Id_pregunta ?>', '<?= $datos->Pregunta ?>', '<?= $datos->Actualizado_Por ?>', '<?= $datos->Creador_Por ?>', '<?= $datos->Fecha_Creacion ?>','<?= $datos->Fecha_Actualizacion ?>')">
-                                <i class="bi bi-pencil-square"></i>
-                                Editar
-                            </button>
-                            <form method="POST" action="modelos/delete_objeto.php" style="display: inline;">
-                                <input type="hidden" name="Id_pregunta" value="<?= $datos->Id_pregunta ?>">
-                                <button type="button" class="btn btn-danger btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar esta pregunta?')">
-                                    <i class="bi bi-trash"></i>
-                                    Eliminar
-                                </button>
-                            </form>
-<<<<<<< Updated upstream
-=======
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
                         </td>
                     </tr>
                 <?php }
@@ -214,12 +192,4 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
     });
 </script>
 
-<<<<<<< Updated upstream
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-=======
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-=======
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
->>>>>>> 53bc7ead2f5e77e0ad7d460e8d45ab69de85d577
->>>>>>> Stashed changes
